@@ -90,9 +90,6 @@ def depthFirstSearch(problem):
     """
     "*** YOUR CODE HERE ***"
 
-    # run: python pacman.py -l bigMaze -z .5 -p SearchAgent
-    # python pacman.py -l tinyMaze/mediumMaze/bigMaze (-z 0.5<->.5, 1, 1.5, ... : tỉ lệ) -p SearchAgent
-
     startState = problem.getStartState()
     if problem.isGoalState(startState):
         return []
@@ -222,7 +219,7 @@ def aStarSearch(problem, heuristic=nullHeuristic):
             for successor, action, stepCost in problem.getSuccessors(currentState):
                 pathCostToSuc = pathCost + stepCost
                 heuristicCost = pathCostToSuc + heuristic(successor, problem)
-                frontier.push((successor, actions + [action], pathCostToSuc), heuristicCost)
+                frontier.update((successor, actions + [action], pathCostToSuc), heuristicCost)
 
     util.raiseNotDefined()
 
